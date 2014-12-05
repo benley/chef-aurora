@@ -10,10 +10,6 @@
 
 package 'aurora-scheduler'
 
-service 'aurora-scheduler' do
-  action :nothing
-end
-
 directory '/var/lib/aurora/scheduler/db' do
   action :create
   recursive true
@@ -35,4 +31,8 @@ template '/etc/default/aurora-scheduler' do
   group 'root'
   mode '0644'
   notifies :restart, 'service[aurora-scheduler]'
+end
+
+service 'aurora-scheduler' do
+  action [:enable, :start]
 end

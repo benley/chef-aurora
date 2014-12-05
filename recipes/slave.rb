@@ -16,9 +16,9 @@ template '/etc/default/aurora-thermos' do
   owner 'root'
   group 'root'
   mode '00644'
-  notifies :restart, 'service[aurora-thermos-observer]'
+  notifies :restart, 'service[aurora-thermos]'
 end
 
-service 'aurora-thermos-observer' do
+service 'aurora-thermos' do
   action [:enable, :start]
 end
