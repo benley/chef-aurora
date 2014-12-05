@@ -1,0 +1,55 @@
+# Defaults for Aurora startup
+
+###
+# Environment variables control the behavior of the Mesos scheduler driver (libmesos).
+GLOG_v="<%= @libmesos_glog_v %>"
+LIBPROCESS_PORT=<%= @libprocess_port %>"
+#LIBPROCESS_IP=192.168.33.7
+###
+
+###
+# Flags that control the behavior of the JVM.
+#JAVA_OPTS='-Djava.library.path=/usr/local/lib -Dlog4j.configuration="file:///etc/zookeeper/conf/log4j.properties"'
+JAVA_OPTS='<%= @java_opts %>'
+###
+
+AURORA_HOME="/var/lib/aurora"
+
+# Name of the cluster. Please change this.
+CLUSTER_NAME="<%= @cluster_name %>"
+
+# Listening port for the scheduler
+HTTP_PORT="<%= @http_port %>"
+
+# Replicated log quorum size. Set to (floor(number_of_schedulers / 2) + 1)
+QUORUM_SIZE="<%= @quorum_size %>"
+
+# List of zookeeper endpoints
+ZK_ENDPOINTS="<%= @zookeeper_endpoints %>"
+
+# Zookeeper path or URL to mesos master
+MESOS_MASTER="<%= @mesos_master %>"
+
+# Zookeeper ServerSet path to register at
+ZK_SERVERSET_PATH="<%= @zk_serverset %>"
+
+# Log path in zookeeper
+ZK_LOGDB_PATH="<%= @zk_logdb %>"
+
+# Where to store the replicated log on disk
+LOGDB_FILE_PATH="${AURORA_HOME}/scheduler/db"
+
+# Where to store backups on disk
+BACKUP_DIR="${AURORA_HOME}/scheduler/backups"
+
+# Path to thermos executor or wrapper script
+THERMOS_EXECUTOR_PATH="<%= @thermos_executor %>"
+
+# Path to garbage collection executor
+GC_EXECUTOR_PATH="<%= @gc_executor %>"
+
+# Scheduler log verbosity
+LOG_LEVEL="<%= @log_level %>"
+
+# Any args you want to add to the aurora-scheduler invocation:
+EXTRA_SCHEDULER_ARGS="<%= @extra_scheduler_args %>"
