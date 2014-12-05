@@ -35,4 +35,5 @@ end
 
 service 'aurora-scheduler' do
   action [:enable, :start]
+  provider Chef::Provider::Service::Upstart
 end
