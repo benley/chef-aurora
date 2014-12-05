@@ -14,6 +14,14 @@ service 'aurora-scheduler' do
   action :nothing
 end
 
+directory '/var/lib/aurora/scheduler/db' do
+  action :create
+  recursive true
+  owner 'root'
+  group 'root'
+  mode '0750'
+end
+
 execute 'initialize aurora replicated log' do
   not_if { ::File.exist? '/var/lib/aurora/scheduler/db/CURRENT' }
   command 'mesos-log initialize --path=/var/lib/aurora/scheduler/db'
