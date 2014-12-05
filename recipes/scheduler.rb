@@ -22,7 +22,7 @@ end
 
 template '/etc/default/aurora-scheduler' do
   source 'aurora-scheduler.default.erb'
-  variables node['aurora']
+  variables node['aurora']['scheduler']
   user 'root'
   group 'root'
   mode '0644'
