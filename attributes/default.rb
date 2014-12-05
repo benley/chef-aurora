@@ -1,5 +1,10 @@
 # encoding: utf-8
 
+default['aurora']['thermos'] = {
+  zk_announce_endpoints: 'localhost:2181',
+  zk_announce_path: '/aurora/svc'
+}
+
 default['aurora']['scheduler'] = {
   # libmesos logging verbosity
   libmesos_glog_v: '0',
