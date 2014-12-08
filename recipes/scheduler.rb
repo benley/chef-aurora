@@ -36,4 +36,5 @@ end
 service 'aurora-scheduler' do
   action [:enable, :start]
   provider Chef::Provider::Service::Upstart
+  not_if { ::File.exist? '/etc/aurora/DISABLE_SCHEDULER' }
 end
