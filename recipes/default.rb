@@ -5,7 +5,6 @@
 #
 # Copyright (C) 2014 Folsom Labs
 #
-# All rights reserved - Do Not Redistribute
-#
 
-include_recipe 'aurora::scheduler'
+fail 'Don\'t use the aurora::default recipe directly. You probably want ' \
+     'aurora::scheduler or aurora::slave'

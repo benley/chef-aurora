@@ -15,7 +15,8 @@ JAVA_OPTS='<%= @java_opts %>'
 
 AURORA_HOME="/var/lib/aurora"
 
-# Name of the cluster. Please change this.
+# Name of the cluster. This doesn't have to match the name set on the mesos
+# master, but it doesn't hurt.
 CLUSTER_NAME="<%= @cluster_name %>"
 
 # Listening port for the scheduler

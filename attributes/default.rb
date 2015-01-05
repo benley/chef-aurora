@@ -1,6 +1,7 @@
 # encoding: utf-8
 
 default['aurora']['thermos'] = {
+  # zookeeper ensemble and base path for service announcements:
   zk_announce_endpoints: 'localhost:2181',
   zk_announce_path: '/aurora/svc'
 }
@@ -29,7 +30,7 @@ default['aurora']['scheduler'] = {
   zk_serverset: '/aurora/scheduler',
   zk_logdb: '/aurora/replicated-log',
 
-  # URL to thermos executor script, or path on the slaves
+  # URL to thermos executor (or wrapper script), or a path on the slaves
   thermos_executor: '/usr/share/aurora/bin/thermos_executor.sh',
 
   # URL or path to the garbage collection executor
@@ -39,3 +40,8 @@ default['aurora']['scheduler'] = {
 
   extra_scheduler_args: '-enable_beta_updater=true'
 }
+
+# Set this to false if you don't want to add apt.folsomlabs.com/aurora to your
+# system. You will need to have the aurora debs available by some other means
+# in that case, presumably from your own repo.
+default['aurora']['use_folsomlabs_apt_repo'] = true

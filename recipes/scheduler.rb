@@ -5,8 +5,8 @@
 #
 # Copyright (C) 2014 Folsom Labs
 #
-# All rights reserved - Do Not Redistribute
-#
+
+include_recipe 'aurora::apt_repo'
 
 package 'aurora-scheduler'
 
