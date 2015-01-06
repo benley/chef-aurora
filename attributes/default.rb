@@ -45,3 +45,6 @@ default['aurora']['scheduler'] = {
 # system. You will need to have the aurora debs available by some other means
 # in that case, presumably from your own repo.
 default['aurora']['use_folsomlabs_apt_repo'] = true
+
+# Is it cool for the scheduler recipe to install java?
+default['aurora']['install_java'] = true

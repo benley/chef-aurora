@@ -8,4 +8,5 @@ version          '0.1.8'
 
 supports 'ubuntu'
 depends 'apt'
+depends 'java'
 depends 'mesos'
