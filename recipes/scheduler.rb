@@ -7,6 +7,7 @@
 #
 
 include_recipe 'aurora::apt_repo'
+include_recipe 'mesos::install'
 
 package 'aurora-scheduler'
 
@@ -34,7 +35,6 @@ template '/etc/default/aurora-scheduler' do
 end
 
 service 'aurora-scheduler' do
-  action [:enable, :start]
+  action [:enable]
   provider Chef::Provider::Service::Upstart
-  not_if { ::File.exist? '/etc/aurora/DISABLE_SCHEDULER' }
 end

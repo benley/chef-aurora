@@ -9,6 +9,11 @@ platforms:
   - name: ubuntu-14.04
 
 suites:
-  - name: default
+  - name: scheduler
     run_list:
+      - recipe[aurora::scheduler]
     attributes:
+
+  - name: slave
+    run_list:
+      - recipe[aurora::slave]
