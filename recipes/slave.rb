@@ -8,18 +8,18 @@
 
 include_recipe 'aurora::apt_repo'
 
-package 'aurora-mesos-slave'
+package 'aurora-executor'
 
-template '/etc/default/aurora-thermos' do
-  source 'aurora-thermos.default.erb'
+template '/etc/default/thermos' do
+  source 'thermos.default.erb'
   variables lazy { node['aurora']['thermos'] }
   owner 'root'
   group 'root'
   mode '00644'
-  notifies :restart, 'service[aurora-thermos]'
+  notifies :restart, 'service[thermos]'
 end
 
-service 'aurora-thermos' do
+service 'thermos' do
   action [:enable, :start]
   provider Chef::Provider::Service::Upstart
 end
