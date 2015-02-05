@@ -1,6 +1,9 @@
 # encoding: utf-8
 
 default['aurora']['thermos'] = {
+  # Enable service announcements?
+  announcer_enable: true,
+
   # zookeeper ensemble and base path for service announcements:
   zk_announce_endpoints: 'localhost:2181',
   zk_announce_path: '/aurora/svc'
@@ -38,7 +41,12 @@ default['aurora']['scheduler'] = {
   zk_logdb: '/aurora/replicated-log',
 
   # URL to thermos executor (or wrapper script), or a path on the slaves
-  thermos_executor: '/usr/share/aurora/bin/thermos_executor.sh',
+  thermos_executor: '/usr/share/aurora/bin/thermos_executor.pex',
+
+  # A comma seperated list of additional resources to copy into the sandbox.
+  # Note: if thermos_executor_path is not the thermos_executor.pex file itself,
+  # this must include it.
+  thermos_executor_resources: '',
 
   # URL or path to the garbage collection executor
   gc_executor: '/usr/share/aurora/bin/gc_executor.pex',

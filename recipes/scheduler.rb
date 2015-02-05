@@ -38,6 +38,21 @@ execute 'initialize aurora replicated log' do
   notifies :restart, 'service[aurora-scheduler]'
 end
 
+ruby_block 'set thermos_executor flags' do
+  block do
+    node.default['aurora']['scheduler']['thermos_executor_flags'] =
+      if node['aurora']['thermos']['announcer_enable']
+        [
+          '--announcer-enable=true',
+          "--announcer-ensemble=#{node['aurora']['thermos']['zk_annnounce_endpoints']}",
+          "--announcer-serverset-path=#{node['aurora']['thermos']['zk_announce_path']}"
+        ].join(' ')
+      else
+        ''
+      end
+  end
+end
+
 template '/etc/default/aurora-scheduler' do
   source 'aurora-scheduler.default.erb'
   variables lazy { node['aurora']['scheduler'] }
