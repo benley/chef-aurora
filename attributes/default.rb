@@ -48,6 +48,8 @@ default['aurora']['scheduler'] = {
   # this must include it.
   thermos_executor_resources: '',
 
+  allowed_container_types: 'MESOS,DOCKER',
+
   # URL or path to the garbage collection executor
   gc_executor: '/usr/share/aurora/bin/gc_executor.pex',
 
