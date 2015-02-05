@@ -11,9 +11,11 @@ platforms:
 suites:
   - name: scheduler
     run_list:
+      - recipe[apt]
       - recipe[aurora::scheduler]
     attributes:
 
   - name: slave
     run_list:
+      - recipe[apt]
       - recipe[aurora::slave]
