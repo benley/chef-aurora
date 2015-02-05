@@ -7,6 +7,13 @@ default['aurora']['thermos'] = {
 }
 
 default['aurora']['scheduler'] = {
+  # Should Chef automatically initialize the replicated log?
+  #
+  # CAUTION: you only want to do this on the first scheduler node in a new
+  #          cluster or you could lose *all* of your aurora state. RTFM!
+  #
+  autoinit_db: false,
+
   # libmesos logging verbosity
   libmesos_glog_v: '0',
 

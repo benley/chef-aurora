@@ -30,7 +30,10 @@ directory '/var/lib/aurora/scheduler/db' do
 end
 
 execute 'initialize aurora replicated log' do
-  not_if { ::File.exist? '/var/lib/aurora/scheduler/db/CURRENT' }
+  only_if do
+    (! ::File.exist? '/var/lib/aurora/scheduler/db/CURRENT') &&
+      node['aurora']['scheduler']['autoinit_db'].to_s.downcase == 'true'
+  end
   command 'mesos-log initialize --path=/var/lib/aurora/scheduler/db'
   notifies :restart, 'service[aurora-scheduler]'
 end
