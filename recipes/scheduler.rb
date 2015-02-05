@@ -43,7 +43,7 @@ ruby_block 'set thermos_executor flags' do
     node.default['aurora']['scheduler']['thermos_executor_flags'] =
       if node['aurora']['thermos']['announcer_enable']
         [
-          '--announcer-enable=true',
+          '--announcer-enable',
           "--announcer-ensemble=#{node['aurora']['thermos']['zk_announce_endpoints']}",
           "--announcer-serverset-path=#{node['aurora']['thermos']['zk_announce_path']}"
         ].join(' ')
