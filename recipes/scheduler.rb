@@ -13,11 +13,19 @@ include_recipe 'mesos::install'
 
 package 'aurora-scheduler'
 
+directory '/var/lib/aurora/scheduler' do
+  action :create
+  recursive true
+  owner 'aurora'
+  group 'aurora'
+  mode '0750'
+end
+
 directory '/var/lib/aurora/scheduler/db' do
   action :create
   recursive true
-  owner 'root'
-  group 'root'
+  owner 'aurora'
+  group 'aurora'
   mode '0750'
 end
 
