@@ -8,7 +8,7 @@ Only tested on Ubuntu 14.04, with the Folsom Labs deb packages for Aurora. Shoul
 
 ## Attributes
 
-There are a lot of attributes. Please read through [attributes/default.md](attributes/default.md) for the details.
+There are a lot of attributes. Please read through [attributes/default.rb](attributes/default.rb) for the details.
 
 ## Usage
 
