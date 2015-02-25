@@ -1,5 +1,7 @@
 # encoding: utf-8
 
+# These thermos parameters are used to generate the value of
+# -thermos_executor_flags="..." for the aurora scheduler.
 default['aurora']['thermos'] = {
   # Enable service announcements?
   announcer_enable: true,
