@@ -6,7 +6,6 @@
 # Copyright (C) 2014 Folsom Labs
 #
 
-node.default['java']['jdk_version'] = 7
 include_recipe 'java' if node['aurora']['install_java']
 include_recipe 'aurora::apt_repo'
 include_recipe 'mesos::install'

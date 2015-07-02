@@ -67,3 +67,8 @@ default['aurora']['use_folsomlabs_apt_repo'] = true
 
 # Is it cool for the scheduler recipe to install java?
 default['aurora']['install_java'] = true
+
+# Aurora 0.9.0 onwards will require Java version 8
+default['java']['install_flavor'] = 'oracle'
+default['java']['jdk_version'] = '8'
+default['java']['oracle']['accept_oracle_download_terms'] = true
