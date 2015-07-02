@@ -1,6 +1,6 @@
 # aurora cookbook
 
-Chef cookbook for Apache Aurora
+Chef cookbook for [Apache Aurora](https://aurora.apache.org)
 
 ## Supported Platforms
 
@@ -28,15 +28,15 @@ Include `aurora` in your node's `run_list`:
 
 ### aurora::slave
 
-Include aurora::slave in your mesos slave nodes run_list. You will most likely want to set some attrbibutes (as in, mesos slave attributes) for aurora to use.
+Include `aurora::slave` in your mesos slave node's `run_list`. You will most likely want to set some attributes (as in, mesos slave attributes) for aurora to use.
 
 For example, this might make sense for a cluster on AWS:
 
 ```ruby
-default['mesos']['slave']['attributes']['host'] = node['hostname']
-default['mesos']['slave']['attributes']['rack'] = node['ec2']['placement_availability_zone']
-default['mesos']['slave']['attributes']['instance_id'] = node['ec2']['instance_id']
-default['mesos']['slave']['attributes']['instance_type'] = node['ec2']['instance_type']
+default['mesos']['slave']['flags']['attributes']['host'] = node['hostname']
+default['mesos']['slave']['flags']['attributes']['rack'] = node['ec2']['placement_availability_zone']
+default['mesos']['slave']['flags']['attributes']['instance_id'] = node['ec2']['instance_id']
+default['mesos']['slave']['flags']['attributes']['instance_type'] = node['ec2']['instance_type']
 ```
 
 If you want to enable thermos service announcements to zookeeper, you can set some options **on the scheduler nodes**:
