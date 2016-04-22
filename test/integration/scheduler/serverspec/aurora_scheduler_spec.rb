@@ -5,7 +5,9 @@ set :backend, :exec
 describe 'Aurora scheduler' do
 
   it 'is running' do
-    expect(service('aurora-scheduler')).to(be_running)
+    sv_name = 'aurora-scheduler'
+    if os[:family] == 'redhat' then sv_name = 'aurora' end
+    expect(service sv_name).to be_running
   end
 
   it 'is listening on port 8081' do
