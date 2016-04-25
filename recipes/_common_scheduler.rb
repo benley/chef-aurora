@@ -6,6 +6,8 @@
 # Copyright (C) 2014 Folsom Labs
 #
 
+include_recipe 'java' if node['aurora']['install_java']
+
 directory '/var/lib/aurora/scheduler' do
   action :create
   recursive true

@@ -1,11 +1,11 @@
-# Do some stuff Debian specific
-include_recipe 'java' if node['aurora']['install_java']
-
 # Add Aurora repository
-include_recipe "aurora::_debian_repo"
+include_recipe 'mesos::repo'
+include_recipe 'aurora::repo'
+
+
+# Debian specific stuff
 
 # Install Aurora
-include_recipe 'mesos::install'
 package 'aurora-scheduler'
 
 # Include generic scheduler configuration
@@ -23,6 +23,5 @@ template 'aurora-scheduler-config' do
 end
 
 service 'aurora-scheduler' do
-  service_name 'aurora-scheduler'
   action [:enable]
 end

@@ -1,14 +1,13 @@
 # encoding: utf-8
 #
-# Cookbook Name:: aurora
-# Recipe:: _rhel_repo
-#
+# Since there is currently no RPM repository for Aurora, downloading
+# the files instead.
+base_url = 'https://bintray.com/artifact/download/apache/aurora/centos-7/'
 
-remote_file 'mesosphere-el-repo-7-1.noarch.rpm' do
-  source 'http://repos.mesosphere.io/el/7/noarch/RPMS/mesosphere-el-repo-7-1.noarch.rpm'
-  mode '0755'
-end
-yum_package 'mesosphere-el-repo-7.1' do
-  source 'mesosphere-el-repo-7-1.noarch.rpm'
-  action :install
+%w(scheduler executor).each do |sv|
+  fname = "aurora-#{sv}-0.12.0-1.el7.centos.aurora.x86_64.rpm"
+  remote_file fname do
+    source base_url + fname
+    mode '0755'
+  end
 end
