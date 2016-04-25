@@ -2,14 +2,13 @@
 include_recipe 'mesos::repo'
 include_recipe 'aurora::repo'
 
-
 # Debian specific stuff
 
 # Install Aurora
 package 'aurora-scheduler'
 
 # Include generic scheduler configuration
-include_recipe "aurora::_common_scheduler"
+include_recipe 'aurora::_common_scheduler'
 
 # Write debian specific configuration file
 template 'aurora-scheduler-config' do

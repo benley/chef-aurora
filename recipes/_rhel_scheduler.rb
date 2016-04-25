@@ -2,7 +2,6 @@
 include_recipe 'mesos::repo'
 include_recipe 'aurora::repo'
 
-
 # RHEL specific
 
 # Install aurora-scheduler package
@@ -13,7 +12,7 @@ package 'aurora-scheduler-0.12.0-1' do
 end
 
 # Include generic scheduler configuration
-include_recipe "aurora::_common_scheduler"
+include_recipe 'aurora::_common_scheduler'
 
 # Write rhel specific configuration file
 template 'aurora-scheduler-config' do

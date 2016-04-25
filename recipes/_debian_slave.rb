@@ -1,6 +1,5 @@
 include_recipe 'aurora::repo'
 
-
 # Debian specific stuff
 
 # Install aurora-executor package

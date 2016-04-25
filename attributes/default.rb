@@ -30,13 +30,13 @@ default['aurora']['scheduler']['glob_opts'] = {
   'GLOG_v' => '0',
   # Port used to register the framework with the mesos master
   'LIBPROCESS_PORT' => '8083',
-  'LIBPROCESS_IP' => '127.0.0.1',
+  'LIBPROCESS_IP' => '127.0.0.1'
 }
 
 default['aurora']['scheduler']['java_opts'] = [
   '-server',
   # Mesosphere debs put mesos libraries in /usr/local/lib
-  '-Djava.library.path=/usr/local/lib',
+  '-Djava.library.path=/usr/local/lib'
 ]
 
 default['aurora']['scheduler']['app_config'] = {
@@ -53,12 +53,14 @@ default['aurora']['scheduler']['app_config'] = {
   # The ZooKeeper URL of the ZNode where the Mesos master has registered.
   mesos_master_address: 'zk://localhost:2181/mesos',
 
-  # The ZooKeeper ZNode within the specified quorum to which Aurora will register its
-  # ServerSet, which keeps track of all live Aurora schedulers.
+  # The ZooKeeper ZNode within the specified quorum to which Aurora
+  # will register its ServerSet, which keeps track of all live Aurora
+  # schedulers.
   serverset_path: '/aurora/scheduler',
 
   # URL to thermos executor (or wrapper script), or a path on the slaves
   thermos_executor_path: '/usr/share/aurora/bin/thermos_executor.pex',
+
   # A comma seperated list of additional resources to copy into the sandbox.
   # Note: if thermos_executor_path is not the thermos_executor.pex file itself,
   # this must include it.
@@ -67,18 +69,22 @@ default['aurora']['scheduler']['app_config'] = {
   # Allows the scheduling of containers of the provided type.
   allowed_container_types: 'MESOS,DOCKER',
 
-  # Size of the quorum of Aurora schedulers which possess a native log.  If running in
-  # multi-master mode, consult the following document to determine appropriate values:
+  # Size of the quorum of Aurora schedulers which possess a native
+  # log.  If running in multi-master mode, consult the following
+  # document to determine appropriate values:
   #
   # https://aurora.apache.org/documentation/latest/deploying-aurora-scheduler/#replicated-log-configuration
   # IMPORTANT: Set to (floor(NumberOfSchedulers/2) + 1)
   native_log_quorum_size: 1, # former quorum_size
-  # The ZooKeeper ZNode to which Aurora will register the locations of its replicated log.
+  # The ZooKeeper ZNode to which Aurora will register the locations of
+  # its replicated log.
   native_log_zk_group_path: '/aurora/replicated-log', # former zk_logdb
-  # The local directory in which an Aurora scheduler can find Aurora's replicated log.
+  # The local directory in which an Aurora scheduler can find Aurora's
+  # replicated log.
   native_log_file_path: '/var/lib/aurora/scheduler/db',
-  # The local directory in which Aurora schedulers will place state backups.
-  backup_dir: '/var/lib/aurora/scheduler/backups',
+  # The local directory in which Aurora schedulers will place state
+  # backups.
+  backup_dir: '/var/lib/aurora/scheduler/backups'
 }
 
 # Set this to false if you don't want to add apt.folsomlabs.com/aurora to your

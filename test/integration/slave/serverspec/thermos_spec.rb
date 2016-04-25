@@ -3,10 +3,9 @@ require 'serverspec'
 set :backend, :exec
 
 describe 'Thermos observer' do
-
   it 'is running' do
     sv_name = 'thermos'
-    if os[:family] == 'redhat' then sv_name = 'thermos-observer' end
+    sv_name = 'thermos-observer' if os[:family] == 'redhat'
     expect(service sv_name).to be_running
   end
 

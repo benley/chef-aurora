@@ -2,7 +2,6 @@
 include_recipe 'mesos::repo'
 include_recipe 'aurora::repo'
 
-
 # RHEL specific stuff
 
 # Install aurora-executor package
