@@ -1,5 +1,12 @@
 # encoding: utf-8
 
+# Installation method can be either:
+# * 'rpm' to install Aurora packages directly from RPM files
+# * 'yum' to install Aurora packages from a yum repository
+default['aurora']['package']['rhel'] = {
+  install_method: 'rpm'
+}
+
 # These thermos parameters are used to generate the value of
 # -thermos_executor_flags="..." for the aurora scheduler.
 default['aurora']['thermos'] = {

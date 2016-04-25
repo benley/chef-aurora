@@ -6,9 +6,10 @@ include_recipe 'aurora::repo'
 # RHEL specific stuff
 
 # Install aurora-executor package
-yum_package 'aurora-executor' do
-  source "aurora-executor-0.12.0-1.el7.centos.aurora.x86_64.rpm"
-  action :install
+package 'aurora-executor' do
+  if node['aurora']['package']['rhel']['install_method'] == 'rpm'
+    source 'aurora-executor-0.12.0-1.el7.centos.aurora.x86_64.rpm'
+  end
 end
 
 # Start thermos observer
