@@ -7,8 +7,9 @@ include_recipe 'aurora::repo'
 # Install aurora-scheduler package
 package 'aurora-scheduler' do
   if node['aurora']['package']['rhel']['install_method'] == 'rpm'
-    source 'aurora-scheduler-0.12.0-1.el7.centos.aurora.x86_64.rpm'
+    source "aurora-scheduler-#{node['aurora']['version']}.el7.centos.aurora.x86_64.rpm"
   end
+  version node['aurora']['version']
 end
 
 # Include generic scheduler configuration

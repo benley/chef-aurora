@@ -1,5 +1,8 @@
 # encoding: utf-8
 
+# This attributes is only taken into account for RHEL installations
+default['aurora']['version'] = '0.12.0-1'
+
 # Installation method can be either:
 # * 'rpm' to install Aurora packages directly from RPM files
 # * 'yum' to install Aurora packages from a yum repository
