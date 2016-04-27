@@ -30,7 +30,6 @@ default['aurora']['scheduler']['glob_opts'] = {
   'GLOG_v' => '0',
   # Port used to register the framework with the mesos master
   'LIBPROCESS_PORT' => '8083',
-  'LIBPROCESS_IP' => '127.0.0.1'
 }
 
 default['aurora']['scheduler']['java_opts'] = [
