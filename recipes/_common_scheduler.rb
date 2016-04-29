@@ -26,10 +26,12 @@ end
 
 execute 'initialize aurora replicated log' do
   only_if do
+    # Warning: this test doesn't work as the file is created
+    # 'unitialized' by aurora at startup
     (! ::File.exist? '/var/lib/aurora/scheduler/db/CURRENT') &&
-      node['aurora']['scheduler']['autoinit_db'].to_s.casecmp('true').zero?
+      node['aurora']['scheduler']['autoinit_db']
   end
-  command 'mesos-log initialize --path=/var/lib/aurora/scheduler/db'
+  command 'sudo -u aurora mesos-log initialize --path=/var/lib/aurora/scheduler/db'
   notifies :restart, 'service[aurora-scheduler]'
 end
 
