@@ -4,7 +4,9 @@
 # Environment variables control the behavior of the Mesos scheduler driver (libmesos).
 GLOG_v="<%= @glob_opts['GLOG_v'] %>"
 LIBPROCESS_PORT="<%= @glob_opts['LIBPROCESS_PORT'] %>"
+<% if @glob_opts['LIBPROCESS_IP'] %>
 LIBPROCESS_IP="<%= @glob_opts['LIBPROCESS_IP'] %>"
+<% end %>
 ###
 
 ###
