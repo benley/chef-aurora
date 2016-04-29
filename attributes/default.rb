@@ -89,6 +89,11 @@ default['aurora']['scheduler']['app_config'] = {
   backup_dir: '/var/lib/aurora/scheduler/backups'
 }
 
+default['aurora']['scheduler']['mesos_creds'] = {
+  aurora_authentication_principal: 'aurora',
+  aurora_authentication_secret: 'test'
+}
+
 # Set this to false if you don't want to add apt.folsomlabs.com/aurora to your
 # system. You will need to have the aurora debs available by some other means
 # in that case, presumably from your own repo.

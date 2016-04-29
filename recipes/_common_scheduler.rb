@@ -47,3 +47,12 @@ ruby_block 'set thermos_executor flags' do
       end
   end
 end
+
+# Write Mesos master credentials if required
+template '/etc/aurora-mesos-creds' do
+  variables node['aurora']['scheduler']
+  user 'root'
+  group 'root'
+  mode '0600'
+  notifies :restart, 'service[aurora-scheduler]'
+end if node['aurora']['scheduler']['mesos_creds']
