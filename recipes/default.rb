@@ -6,5 +6,5 @@
 # Copyright (C) 2014 Folsom Labs
 #
 
-fail 'Don\'t use the aurora::default recipe directly. You probably want ' \
+raise 'Don\'t use the aurora::default recipe directly. You probably want ' \
      'aurora::scheduler or aurora::slave'

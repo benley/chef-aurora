@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
-VAGRANTFILE_API_VERSION = '2'
+VAGRANTFILE_API_VERSION = '2'.freeze
 
 Vagrant.require_version '>= 1.5.0'
 
@@ -18,15 +18,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #
   #   $ vagrant plugin install vagrant-omnibus
   #
-  if Vagrant.has_plugin?
-    config.omnibus.chef_version = 'latest'
-  end
+  config.omnibus.chef_version = 'latest' if Vagrant.has_plugin?
 
   # Every Vagrant virtual environment requires a box to build off of.
   # If this value is a shorthand to a box in Vagrant Cloud then
   # config.vm.box_url doesn't need to be specified.
-  config.vm.box = 'chef/ubuntu-14.04'
-
+  # Using default value: computed from the platform name of the
+  # instance.
+  # config.vm.box = 'chef/ubuntu-14.04'
 
   # Assign this VM to a host-only network IP, allowing you to access it
   # via the IP. Host-only networks can talk to the host machine as well as
