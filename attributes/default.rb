@@ -86,7 +86,10 @@ default['aurora']['scheduler']['app_config'] = {
   native_log_file_path: '/var/lib/aurora/scheduler/db',
   # The local directory in which Aurora schedulers will place state
   # backups.
-  backup_dir: '/var/lib/aurora/scheduler/backups'
+  backup_dir: '/var/lib/aurora/scheduler/backups',
+
+  # Authentication file
+  framework_authentication_file: '/etc/aurora-mesos-creds'
 }
 
 default['aurora']['scheduler']['mesos_creds'] = {
