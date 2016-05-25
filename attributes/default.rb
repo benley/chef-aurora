@@ -10,6 +10,30 @@ default['aurora']['package']['rhel'] = {
   install_method: 'rpm'
 }
 
+# Aurora configuration files are platform dependant
+default['aurora']['config_files']['scheduler'] = case node['platform_family']
+    when 'debian' then '/etc/default/aurora-scheduler'
+    when 'rhel'   then '/etc/sysconfig/aurora'
+    else raise "Platform family #{node['platform_family']} not supported"
+end
+default['aurora']['config_files']['thermos_observer'] = case node['platform_family']
+    when 'debian' then '/etc/default/thermos'
+    when 'rhel'   then '/etc/sysconfig/thermos-observer'
+    else raise "Platform family #{node['platform_family']} not supported"
+end
+
+# Aurora services names are platform dependant
+default['aurora']['services']['scheduler'] = case node['platform_family']
+    when 'debian' then 'aurora-scheduler'
+    when 'rhel'   then 'aurora'
+    else raise "Platform family #{node['platform_family']} not supported"
+end
+default['aurora']['services']['thermos_observer'] = case node['platform_family']
+    when 'debian' then 'thermos'
+    when 'rhel'   then 'thermos-observer'
+    else raise "Platform family #{node['platform_family']} not supported"
+end
+
 # These thermos parameters are used to generate the value of
 # -thermos_executor_flags="..." for the aurora scheduler.
 default['aurora']['thermos'] = {

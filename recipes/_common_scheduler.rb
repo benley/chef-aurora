@@ -59,3 +59,19 @@ template node['aurora']['scheduler']['app_config']['framework_authentication_fil
   mode '0600'
   notifies :restart, 'service[aurora-scheduler]'
 end if node['aurora']['scheduler']['mesos_creds'] and node['aurora']['scheduler']['app_config']['framework_authentication_file']
+
+# Write aurora scheduler configuration file
+template 'aurora-scheduler-config' do
+  source "aurora-scheduler-config-#{node['platform_family']}.erb"
+  path node['aurora']['config_files']['scheduler']
+  variables lazy { node['aurora']['scheduler'] }
+  user 'root'
+  group 'root'
+  mode '0644'
+  notifies :restart, 'service[aurora-scheduler]'
+end
+
+service 'aurora-scheduler' do
+  service_name node['aurora']['services']['scheduler']
+  action [:enable]
+end
