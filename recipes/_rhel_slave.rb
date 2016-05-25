@@ -12,6 +12,16 @@ package 'aurora-executor' do
   version node['aurora']['version']
 end
 
+# Configure Thermos observer
+template '/etc/sysconfig/thermos-observer' do
+  source 'thermos-observer-rhel.erb'
+  variables node['aurora']
+  owner 'root'
+  group 'root'
+  mode '00644'
+  notifies :restart, 'service[thermos-observer]'
+end
+
 # Start thermos observer
 service 'thermos-observer' do
   action [:enable, :start]

@@ -21,6 +21,13 @@ default['aurora']['thermos'] = {
   zk_announce_path: '/aurora/svc'
 }
 
+# thermos-observer config
+default['aurora']['thermos_observer'] = {
+  port: '1338',
+  log_to_disk: 'NONE',
+  log_to_stderr: 'google:INFO'
+}
+
 # Should Chef automatically initialize the replicated log?
 #
 # CAUTION: you only want to do this on the first scheduler node in a new

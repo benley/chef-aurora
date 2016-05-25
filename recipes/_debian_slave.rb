@@ -5,10 +5,10 @@ include_recipe 'aurora::repo'
 # Install aurora-executor package
 package 'aurora-executor'
 
-# Configure Thermos
+# Configure Thermos observer
 template '/etc/default/thermos' do
-  source 'thermos.default.erb'
-  variables lazy { node['aurora']['thermos'] }
+  source 'thermos-observer-debian.erb'
+  variables node['aurora']['thermos_observer']
   owner 'root'
   group 'root'
   mode '00644'
