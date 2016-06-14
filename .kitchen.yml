@@ -23,3 +23,8 @@ suites:
     run_list:
       - recipe[apt]
       - recipe[aurora::slave]
+
+  - name: client
+    run_list:
+      - recipe[apt]
+      - recipe[aurora::client]
