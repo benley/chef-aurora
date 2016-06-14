@@ -1,7 +1,11 @@
 # encoding: utf-8
 
-# This attributes is only taken into account for RHEL installations
-default['aurora']['version'] = '0.12.0-1'
+# The package version needs to be specified for RHEL platforms
+# We use the latest version available for debian platforms
+default['aurora']['version'] = case node['platform_family']
+    when 'rhel' then '0.12.0-1'
+    else ''
+end
 
 # Installation method can be either:
 # * 'rpm' to install Aurora packages directly from RPM files
@@ -44,6 +48,13 @@ default['aurora']['thermos'] = {
   zk_announce_endpoints: 'localhost:2181',
   zk_announce_path: '/aurora/svc'
 }
+
+default['aurora']['client'] = [
+  {
+    name: "test-cluster",
+    scheduler_uri: "http://localhost:55555",
+  }
+]
 
 # thermos-observer config
 default['aurora']['thermos_observer'] = {
