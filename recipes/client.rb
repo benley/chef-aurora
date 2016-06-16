@@ -1,4 +1,3 @@
-include_recipe 'mesos::repo'
 include_recipe 'aurora::repo'
 
 package 'aurora-tools' do
