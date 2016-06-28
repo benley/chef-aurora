@@ -1,5 +1,5 @@
 # Add (Mesos & Aurora) required repositories
-include_recipe 'mesos::repo'
+include_recipe 'mesos::repo' if node['mesos']['repo']
 include_recipe 'aurora::repo'
 
 # Install aurora-executor package

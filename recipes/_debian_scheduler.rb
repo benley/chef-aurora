@@ -1,5 +1,5 @@
 # Add Aurora repository
-include_recipe 'mesos::repo'
+include_recipe 'mesos::repo' if node['mesos']['repo']
 include_recipe 'aurora::repo'
 
 # Install Aurora
