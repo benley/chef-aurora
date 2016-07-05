@@ -58,6 +58,7 @@ template node['aurora']['scheduler']['app_config']['framework_authentication_fil
   group 'aurora'
   mode '0600'
   notifies :restart, 'service[aurora-scheduler]'
+  sensitive true
 end if node['aurora']['scheduler']['mesos_creds'] and node['aurora']['scheduler']['app_config']['framework_authentication_file']
 
 # Write aurora scheduler configuration file
