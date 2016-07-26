@@ -131,13 +131,20 @@ default['aurora']['scheduler']['app_config'] = {
   backup_dir: '/var/lib/aurora/scheduler/backups',
 
   # Authentication file
-  framework_authentication_file: '/etc/aurora-mesos-creds'
+  framework_authentication_file: '/etc/aurora-mesos-creds',
+
+  # HTTP Basic Authentication (source: http://aurora.apache.org/documentation/latest/operations/security/#http-basic-authentication)
+  #http_authentication_mechanism: 'BASIC',
+  #shiro_realm_modules: 'INI_AUTHNZ',
+  #shiro_ini_path: '/etc/aurora/security.ini',
 }
 
 default['aurora']['scheduler']['mesos_creds'] = {
   aurora_authentication_principal: 'aurora',
   aurora_authentication_secret: 'test'
 }
+
+default['aurora']['scheduler']['security']['admins']= {'sally' => 'apple'}
 
 # Set this to false if you don't want to add apt.folsomlabs.com/aurora to your
 # system. You will need to have the aurora debs available by some other means

@@ -61,6 +61,24 @@ template node['aurora']['scheduler']['app_config']['framework_authentication_fil
   sensitive true
 end if node['aurora']['scheduler']['mesos_creds'] and node['aurora']['scheduler']['app_config']['framework_authentication_file']
 
+# Create directory for Aurora security file if required
+directory 'aurora-security-directory' do
+  path ::File.dirname(node['aurora']['scheduler']['app_config']['shiro_ini_path'])
+  recursive true
+end if node['aurora']['scheduler']['app_config']['shiro_ini_path']
+
+# Write Aurora security file if required
+template 'aurora-security' do
+  source 'aurora-security.erb'
+  path node['aurora']['scheduler']['app_config']['shiro_ini_path']
+  variables node['aurora']['scheduler']['security']
+  user 'aurora'
+  group 'aurora'
+  mode '0600'
+  notifies :restart, 'service[aurora-scheduler]'
+  sensitive true
+end if node['aurora']['scheduler']['app_config']['shiro_ini_path']
+
 # Write aurora scheduler configuration file
 template 'aurora-scheduler-config' do
   source "aurora-scheduler-config-#{node['platform_family']}.erb"
