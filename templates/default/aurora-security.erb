@@ -1,0 +1,7 @@
+[users]
+<% @admins.sort.each do |key, value| %>
+<%= key %> = <%= value %>, admin
+<% end %>
+
+[roles]
+admin = *
