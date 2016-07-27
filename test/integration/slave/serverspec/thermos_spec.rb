@@ -3,9 +3,10 @@ require 'serverspec'
 set :backend, :exec
 
 describe 'Thermos observer' do
-
   it 'is running' do
-    expect(service 'thermos').to be_running
+    sv_name = 'thermos'
+    sv_name = 'thermos-observer' if os[:family] == 'redhat'
+    expect(service sv_name).to be_running
   end
 
   it 'is listening on tcp/1338' do
