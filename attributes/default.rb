@@ -48,6 +48,9 @@ default['aurora']['thermos'] = {
   zk_announce_endpoints: 'localhost:2181',
   zk_announce_path: '/aurora/svc'
 }
+# Other arguments of --thermos_executor_flags can also be passed
+# directly
+default['aurora']['scheduler']['app_config']['thermos_executor_flags'] = ''
 
 default['aurora']['client'] = [
   {
