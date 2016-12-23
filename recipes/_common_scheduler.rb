@@ -37,7 +37,7 @@ end
 
 ruby_block 'set thermos_executor flags' do
   block do
-    node.default['aurora']['scheduler']['app_config']['thermos_executor_flags'] <<
+    node.default['aurora']['scheduler']['app_config']['thermos_executor_flags'] = node['aurora']['scheduler']['app_config']['thermos_executor_flags'] +
       if node['aurora']['thermos']['announcer_enable']
         [
           ' --announcer-enable',
